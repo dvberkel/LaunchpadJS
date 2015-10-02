@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var template = require('gulp-template');
+var KarmaServer = require('karma').Server;
 
 var bower = require('./bower.json');
 
@@ -26,6 +27,13 @@ gulp.task('compress', ['concat'], function(){
         .pipe(uglify())
         .pipe(rename({ extname: '.min.js' }))
         .pipe(gulp.dest(dist_dir));
+});
+
+gulp.task('test', ['compress'], function(done){
+    new KarmaServer({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done).start()
 });
 
 gulp.task('default', ['compress'], function(){
