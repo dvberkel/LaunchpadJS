@@ -1,0 +1,23 @@
+{
+  "name": "LaunchpadJS",
+  "version": "1.0.0",
+  "homepage": "https://github.com/dvberkel/LaunchpadJS",
+  "authors": [
+    "dvberkel <daan.v.berkel.1980@gmail.com>"
+  ],
+  "description": "Interacting with a Novation Launchpad from your browser with the web MIDI API.",
+  "main": "launchpad.js",
+  "keywords": [
+    "novation",
+    "launchpad",
+    "midi"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
