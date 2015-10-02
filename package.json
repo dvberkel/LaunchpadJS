@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/dvberkel/LaunchpadJS/issues"
   },
-  "homepage": "https://github.com/dvberkel/LaunchpadJS"
+  "homepage": "https://github.com/dvberkel/LaunchpadJS",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
