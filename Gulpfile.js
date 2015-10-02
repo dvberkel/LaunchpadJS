@@ -7,7 +7,7 @@ var dist_dir = './'
 var dist_file = 'launchpad.js';
 
 gulp.task('concat', function(){
-    return gulp.src(['src/launchpad.js'])
+    return gulp.src(['src/**.js'])
         .pipe(concat(dist_file, { newLine: ';' }))
         .pipe(gulp.dest(dist_dir));
 });
