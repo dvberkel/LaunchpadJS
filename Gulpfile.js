@@ -2,11 +2,20 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var template = require('gulp-template');
+
+var bower = require('./bower.json');
 
 var dist_dir = './'
 var dist_file = 'launchpad.js';
 
-gulp.task('concat', function(){
+gulp.task('version', function(){
+    return gulp.src('template/version.js')
+        .pipe(template(bower))
+        .pipe(gulp.dest('src/'));
+});
+
+gulp.task('concat', ['version'], function(){
     return gulp.src(['src/**.js'])
         .pipe(concat(dist_file, { newLine: ';' }))
         .pipe(gulp.dest(dist_dir));
