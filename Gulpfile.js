@@ -36,6 +36,12 @@ gulp.task('test', ['compress'], function(done){
     }, done).start()
 });
 
+gulp.task('tdd', ['compress'], function(done){
+    new KarmaServer({
+        configFile: __dirname + '/karma.conf.js'
+    }, done).start()
+});
+
 gulp.task('default', ['compress'], function(){
     /* noting to do here */
 });
