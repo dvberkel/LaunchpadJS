@@ -1,3 +1,3 @@
 ;(function($){
-    /* launchpad */
+    $.connect = function(){};
 })(window.launchpad = window.launchpad || {});

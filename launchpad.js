@@ -1,5 +1,5 @@
 ;(function($){
-    /* launchpad */
+    $.connect = function(){};
 })(window.launchpad = window.launchpad || {});
 ;(function($){
     $.version = '1.0.0';
