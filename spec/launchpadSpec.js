@@ -12,13 +12,13 @@ describe('launchpad', function(){
             expect(launchpad.defaults).toBeDefined();
         });
 
-        describe('.midiAdapter', function(){
+        describe('.midiAdapterFactory', function(){
             it('should exist', function(){
-                expect(launchpad.defaults.midiAdapter).toBeDefined();
+                expect(launchpad.defaults.midiAdapterFactory).toBeDefined();
             });
 
             it('should be a function', function(){
-                expect(typeof launchpad.defaults.midiAdapter).toBe('function');
+                expect(typeof launchpad.defaults.midiAdapterFactory).toBe('function');
             });
         });
     });
@@ -31,7 +31,7 @@ describe('launchpad', function(){
         it('should return a Promise', function(done){
             var expectedResult = true;
             var p = launchpad.connect({
-                midiAdapter: function(accept, reject){
+                midiAdapterFactory: function(accept, reject){
                     accept(expectedResult);
                 }
             });
