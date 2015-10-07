@@ -1,4 +1,4 @@
-describe('observerable', function(){
+describe('Observable', function(){
     var Observer = function(){
         this.notified = false;
         this.arguments = [];
