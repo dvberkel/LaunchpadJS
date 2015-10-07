@@ -51,4 +51,15 @@ describe('observerable', function(){
         expect(observer.arguments[1]).toBe(true);
         expect(observer.arguments[2]).toBe('value');
     });
+
+    it('should silently ignore non-functions', function(){
+        var observer = new Observer();
+        var observable = new launchpad.Observable();
+        observable.on('verify', observer.callback.bind(observer));
+        observable.on('verify', {});
+
+        observable.emit('verify');
+
+        expect(observer.notified).toBe(true);
+    });
 });

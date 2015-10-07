@@ -3,6 +3,7 @@
         this.observers = {};
     };
     Observable.prototype.on = function(event, callback){
+        if (typeof callback !== 'function') return;
         (this.observers[event] = this.observers[event] || []).push(callback);
     };
     Observable.prototype.emit = function(event){
