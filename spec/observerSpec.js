@@ -1,8 +1,10 @@
 describe('observerable', function(){
     var Observer = function(){
         this.notified = false;
+        this.arguments = [];
     };
     Observer.prototype.callback = function(){
+        this.arguments = Array.prototype.slice.call(arguments);
         this.notified = true;
     }
 
@@ -35,5 +37,18 @@ describe('observerable', function(){
             return allNotified && observer.notified;
         }, true);
         expect(allNotified).toBe(true);
+    });
+
+    it('should pass arguments on notification', function(){
+        var observer = new Observer();
+        var observable = new launchpad.Observable();
+        observable.on('notify', observer.callback.bind(observer));
+
+        observable.emit('notify', 1, true, 'value');
+
+        expect(observer.notified).toBe(true);
+        expect(observer.arguments[0]).toBe(1);
+        expect(observer.arguments[1]).toBe(true);
+        expect(observer.arguments[2]).toBe('value');
     });
 });
