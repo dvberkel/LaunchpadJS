@@ -25,6 +25,14 @@
         });
     }
 })(window.launchpad = window.launchpad || {});
+;;(function($){
+    var Pad = $.Launchpad = function(midiAdapter){
+        $.Observable.call(this);
+        this.midiAdapter = midiAdapter;
+    };
+    Pad.prototype = Object.create($.Observable.prototype);
+    Pad.prototype.constructor = Pad;
+})(window.launchpad = window.launchpad || {});
 ;(function($){
     $.version = '1.0.0';
 })(window.launchpad = window.launchpad || {});
