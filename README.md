@@ -6,6 +6,7 @@ The next code snippit is how I would like to use the API myself, i.e. the most i
 
 ```js
 Launchpad.connect().then(function(launchpad){
+  launchpad.clear();
   launchpad.on('press', function(button){
     button.turn('red');
   });
