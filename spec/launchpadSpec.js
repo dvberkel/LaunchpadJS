@@ -31,6 +31,16 @@ describe('launchpad', function(){
                 expect(launchpad.defaults.name).toBe('Launchpad Mini');
             });
         });
+
+        describe('.sysex', function(){
+            it('should exist', function(){
+                expect(launchpad.defaults.sysex).toBeDefined();
+            });
+
+            it('should be false', function(){
+                expect(launchpad.defaults.sysex).toBe(false);
+            });
+        });
     });
 
     describe('#connect', function(){
