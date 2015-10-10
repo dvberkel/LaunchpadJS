@@ -17,7 +17,7 @@ gulp.task('version', function(){
 });
 
 gulp.task('concat', ['version'], function(){
-    return gulp.src(['src/**.js'])
+    return gulp.src(['src/observer.js', 'src/**.js'])
         .pipe(concat(dist_file, { newLine: ';' }))
         .pipe(gulp.dest(dist_dir));
 });
