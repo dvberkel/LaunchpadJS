@@ -7,7 +7,7 @@
     };
 })(window.launchpad = window.launchpad || {});
 ;;(function($){
-    function extend(){
+    $.extend = function extend(){
         return Array.prototype.slice.call(arguments).reduce(function(result, dictionary){
             for (var key in dictionary){
                 if (dictionary.hasOwnProperty(key) && !result.hasOwnProperty(key)) {
@@ -17,9 +17,10 @@
             return result;
         }, {})
     };
-
+})(window.launchpad = window.launchpad || {});
+;;(function($){
     $.connect = function(options){
-        options = extend(options || {}, $.defaults);
+        options = $.extend(options || {}, $.defaults);
         return new Promise(options.midiAdapterFactory.bind(options));
     };
 })(window.launchpad = window.launchpad || {});
