@@ -51,5 +51,18 @@ describe('launchpad', function(){
                 done();
             });
         });
+
+        it('should set context of midiAdapterFactory to options', function(done){
+            var p = launchpad.connect({
+                midiAdapterFactory: function(accept, reject){
+                    accept(this.name);
+                }
+            });
+
+            p.then(function(result){
+                expect(result).toBe(launchpad.defaults.name);
+                done();
+            });
+        });
     });
 });

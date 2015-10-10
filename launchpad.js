@@ -2,13 +2,25 @@
     var defaults = $.defaults = {};
 
     defaults.name = 'Launchpad Mini';
-    defaults.midiAdapterFactory = function(accept, reject){ /* TODO make a real midi adapter */
+    defaults.midiAdapterFactory = function(name, accept, reject){ /* TODO make a real midi adapter */
         accept(undefined);
     };
 })(window.launchpad = window.launchpad || {});
 ;;(function($){
+    function extend(){
+        return Array.prototype.slice.call(arguments).reduce(function(result, dictionary){
+            for (var key in dictionary){
+                if (dictionary.hasOwnProperty(key) && !result.hasOwnProperty(key)) {
+                    result[key] = dictionary[key];
+                }
+            }
+            return result;
+        }, {})
+    };
+
     $.connect = function(options){
-        return new Promise(options.midiAdapterFactory);
+        options = extend(options || {}, $.defaults);
+        return new Promise(options.midiAdapterFactory.bind(options));
     };
 })(window.launchpad = window.launchpad || {});
 ;;(function($){
