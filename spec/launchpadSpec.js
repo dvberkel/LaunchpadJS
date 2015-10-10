@@ -21,6 +21,16 @@ describe('launchpad', function(){
                 expect(typeof launchpad.defaults.midiAdapterFactory).toBe('function');
             });
         });
+
+        describe('.name', function(){
+            it('should exist', function(){
+                expect(launchpad.defaults.name).toBeDefined();
+            });
+
+            it('should be \'Launchpad Mini\'', function(){
+                expect(launchpad.defaults.name).toBe('Launchpad Mini');
+            });
+        });
     });
 
     describe('#connect', function(){
