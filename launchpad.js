@@ -149,7 +149,10 @@
         handlers
             .filter(function(handler){ return handler.applies(channel, note, velocity); })
             .forEach(function(handler){ handler.handle(this, channel, note, velocity); }.bind(this));
-    }
+    };
+    Pad.prototype.clear = function(){
+        this.midiAdapter.send(176, 0, 0);
+    };
 })(window.launchpad = window.launchpad || {});
 ;(function($){
     $.version = '1.0.0';

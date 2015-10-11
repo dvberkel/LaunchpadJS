@@ -5,6 +5,9 @@ describe('Launchpad', function(){
 
     beforeEach(function(){
         mockMidiAdapter = new launchpad.Observable();
+        mockMidiAdapter.send = function(){
+            this.arguments = Array.prototype.slice.call(arguments);
+        };
     });
 
     it('should be Observable', function(){
@@ -60,6 +63,16 @@ describe('Launchpad', function(){
             expect(button instanceof launchpad.Button).toBe(true);
             expect(button.channel).toBe(ANY_CHANNEL);
             expect(button.note).toBe(ANY_NOTE);
+        });
+    });
+
+    describe('clear', function(){
+        it('should send [176, 0, 0] to midiAdapter', function(){
+            var pad = new launchpad.Launchpad(mockMidiAdapter);
+
+            pad.clear();
+
+            expect(mockMidiAdapter.arguments).toEqual([176, 0, 0]);
         });
     });
 });
