@@ -23,6 +23,19 @@ describe('Launchpad', function(){
 
             expect(notified).toBe(true);
         });
+
+        it('should emit corresponding button', function(){
+            var pad = new launchpad.Launchpad(mockMidiAdapter);
+            var button;
+            pad.on('press', function(aButton){ button = aButton; });
+
+            mockMidiAdapter.emit('input', ANY_CHANNEL, ANY_NOTE, 127);
+
+            expect(button).toBeDefined();
+            expect(button instanceof launchpad.Button).toBe(true);
+            expect(button.channel).toBe(ANY_CHANNEL);
+            expect(button.note).toBe(ANY_NOTE);
+        });
     });
 
     describe('on [*, *, 0] midi message', function(){
@@ -34,6 +47,19 @@ describe('Launchpad', function(){
             mockMidiAdapter.emit('input', ANY_CHANNEL, ANY_NOTE, 0);
 
             expect(notified).toBe(true);
+        });
+
+        it('should emit corresponding button', function(){
+            var pad = new launchpad.Launchpad(mockMidiAdapter);
+            var button;
+            pad.on('release', function(aButton){ button = aButton; });
+
+            mockMidiAdapter.emit('input', ANY_CHANNEL, ANY_NOTE, 0);
+
+            expect(button).toBeDefined();
+            expect(button instanceof launchpad.Button).toBe(true);
+            expect(button.channel).toBe(ANY_CHANNEL);
+            expect(button.note).toBe(ANY_NOTE);
         });
     });
 });

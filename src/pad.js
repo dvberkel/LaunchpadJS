@@ -2,15 +2,17 @@
     var handlers = [
         {
             'applies': function(channel, note, velocity){ return velocity === 127; },
-            'handle': function(pad){ pad.emit('press'); }
+            'handle': function(pad, channel, note, velocity){
+                pad.emit('press', new $.Button(channel, note, pad.midiAdapter));
+            }
         },
         {
             'applies': function(channel, note, velocity){ return velocity === 0; },
-            'handle': function(pad){ pad.emit('release'); }
+            'handle': function(pad, channel, note, velocity){
+                pad.emit('release', new $.Button(channel, note, pad.midiAdapter));
+            }
         }
     ];
-
-
 
     var Pad = $.Launchpad = function(midiAdapter){
         $.Observable.call(this);
@@ -22,6 +24,6 @@
     Pad.prototype.handleInput = function(channel, note, velocity){
         handlers
             .filter(function(handler){ return handler.applies(channel, note, velocity); })
-            .forEach(function(handler){ handler.handle(this); }.bind(this));
+            .forEach(function(handler){ handler.handle(this, channel, note, velocity); }.bind(this));
     }
 })(window.launchpad = window.launchpad || {});
