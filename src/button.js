@@ -9,15 +9,20 @@
     Button.prototype.constructor = Button;
     Button.prototype.turn = function(color){
         if (color === 'red') {
-            this.send(1 * 3);
+            this.paint({ red: 3 })
         }
         if (color == 'green') {
-            this.send(16 * 3);
+            this.paint({ green: 3 });
         }
         if (color == 'orange') {
-            this.send((16 + 1) * 3);
+            this.paint({ red: 3, green: 3 });
         }
     };
+    Button.prototype.paint = function(colors){
+        colors = $.extend(colors, { 'red': 0, 'green': 0 });
+        var velocity = (colors.green % 4) * 16 + (colors.red % 4);
+        this.send(velocity);
+    }
     Button.prototype.send = function(velocity){
         this.midiAdapter.send(this.channel, this.note, velocity);
     };
