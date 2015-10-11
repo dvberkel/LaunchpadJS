@@ -23,15 +23,7 @@
     Button.prototype = Object.create($.Observable.prototype);
     Button.prototype.constructor = Button;
     Button.prototype.turn = function(color){
-        if (color === 'red') {
-            this.paint({ red: 3 })
-        }
-        if (color == 'green') {
-            this.paint({ green: 3 });
-        }
-        if (color == 'orange') {
-            this.paint({ red: 3, green: 3 });
-        }
+        this.paint($.defaults.paintNames[color]);
     };
     Button.prototype.paint = function(colors){
         colors = $.extend(colors, { 'red': 0, 'green': 0 });
@@ -60,6 +52,11 @@
         }
     };
 
+    defaults.paintNames = {
+        'red':    { 'red': 3, 'green': 0 },
+        'green':  { 'red': 0, 'green': 3 },
+        'orange': { 'red': 3, 'green': 3 },
+    };
     defaults.name = 'Launchpad Mini';
     defaults.sysex = false;
     defaults.midiAdapterFactory = function(accept, reject){
