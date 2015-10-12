@@ -42,4 +42,12 @@ describe('button', function(){
 
         expect(mockMidiAdapter.arguments).toEqual([ANY_CHANNEL, ANY_NOTE, 51]);
     });
+
+    it('when turned off should sent channel, note, 0 to midiAdapter', function(){
+        var button = new launchpad.Button(ANY_CHANNEL, ANY_NOTE, mockMidiAdapter);
+
+        button.turn('off');
+
+        expect(mockMidiAdapter.arguments).toEqual([ANY_CHANNEL, ANY_NOTE, 0]);
+    });
 });
