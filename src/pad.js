@@ -14,6 +14,15 @@
         }
     ];
 
+    var buttonLookups = [
+        {
+            'applies': function(args){ return args.length === 1; },
+            'lookup': function(pad, args){
+                return new $.Button(144, args[0], pad.midiAdapter);
+            }
+        }
+    ];
+
     var Pad = $.Launchpad = function(midiAdapter){
         $.Observable.call(this);
         this.midiAdapter = midiAdapter;
@@ -30,6 +39,10 @@
         this.midiAdapter.send(176, 0, 0);
     };
     Pad.prototype.button = function(id){
-        return new $.Button(144, id, this.midiAdapter);
+        var args = Array.prototype.slice.call(arguments);
+        return buttonLookups
+            .filter(function(buttonLookup){ return buttonLookup.applies(args); })
+            .map(function(buttonLookup){ return buttonLookup.lookup(this, args); }.bind(this))
+        [0];
     };
 })(window.launchpad = window.launchpad || {});

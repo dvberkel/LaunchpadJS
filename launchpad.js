@@ -123,7 +123,7 @@
     }
 })(window.launchpad = window.launchpad || {});
 ;;(function($){
-    var handlers = [
+    var inputHandlers = [
         {
             'applies': function(channel, note, velocity){ return velocity === 127; },
             'handle': function(pad, channel, note, velocity){
@@ -138,6 +138,15 @@
         }
     ];
 
+    var buttonLookups = [
+        {
+            'applies': function(args){ return args.length === 1; },
+            'lookup': function(pad, args){
+                return new $.Button(144, args[0], pad.midiAdapter);
+            }
+        }
+    ];
+
     var Pad = $.Launchpad = function(midiAdapter){
         $.Observable.call(this);
         this.midiAdapter = midiAdapter;
@@ -146,7 +155,7 @@
     Pad.prototype = Object.create($.Observable.prototype);
     Pad.prototype.constructor = Pad;
     Pad.prototype.handleInput = function(channel, note, velocity){
-        handlers
+        inputHandlers
             .filter(function(handler){ return handler.applies(channel, note, velocity); })
             .forEach(function(handler){ handler.handle(this, channel, note, velocity); }.bind(this));
     };
@@ -154,7 +163,12 @@
         this.midiAdapter.send(176, 0, 0);
     };
     Pad.prototype.button = function(id){
-        return new $.Button(144, id, this.midiAdapter);
+        var args = Array.prototype.slice.call(arguments);
+        return buttonLookups
+            .filter(function(buttonLookup){ return buttonLookup.applies(args); })
+            .map(function(buttonLookup){ return buttonLookup.lookup(this, args); }.bind(this))
+        [0];
+        //return new $.Button(144, id, this.midiAdapter);
     };
 })(window.launchpad = window.launchpad || {});
 ;(function($){
