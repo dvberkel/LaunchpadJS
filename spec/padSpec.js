@@ -1,4 +1,14 @@
 describe('Launchpad', function(){
+    function cartesianProduct(as, bs) {
+        return as.map(function(a){
+            return bs.map(function(b){
+                return [a, b]
+            });
+        }).reduce(function(result, partialProduct){
+            return result.concat(partialProduct);
+        }, []);
+    };
+
     var ANY_CHANNEL = 144;
     var ANY_NOTE = 0;
     var mockMidiAdapter;
@@ -77,7 +87,7 @@ describe('Launchpad', function(){
     });
 
     describe('button', function(){
-        it('should return regular button id', function(){
+        it('should return a Button by regular button id', function(){
             var pad = new launchpad.Launchpad(mockMidiAdapter);
 
             [0, 1, 2, 3, 4, 5, 6, 7]
@@ -92,6 +102,24 @@ describe('Launchpad', function(){
 
                     expect(button.channel).toBe(144);
                     expect(button.note).toBe(data.note);
+                });
+        });
+
+        it('should return a Button by coordinates', function(){
+            var pad = new launchpad.Launchpad(mockMidiAdapter);
+
+            cartesianProduct([0, 1, 2, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 5, 6, 7, 8])
+                .map(function(product){
+                    return {
+                        'x': product[0],
+                        'y': product[1]
+                    }
+                })
+                .forEach(function(coordinates){
+                    var button = pad.button(coordinates.x, coordinates.y);
+
+                    expect(button.channel).toBe(144);
+                    expect(button.note).toBe(coordinates.x + 16 * coordinates.y);
                 });
         });
     });

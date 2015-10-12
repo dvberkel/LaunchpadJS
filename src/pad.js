@@ -20,6 +20,12 @@
             'lookup': function(pad, args){
                 return new $.Button(144, args[0], pad.midiAdapter);
             }
+        },
+        {
+            'applies': function(args){ return args.length === 2; },
+            'lookup': function(pad, args){
+                return new $.Button(144, args[0] + 16 * args[1], pad.midiAdapter);
+            }
         }
     ];
 

@@ -144,6 +144,12 @@
             'lookup': function(pad, args){
                 return new $.Button(144, args[0], pad.midiAdapter);
             }
+        },
+        {
+            'applies': function(args){ return args.length === 2; },
+            'lookup': function(pad, args){
+                return new $.Button(144, args[0] + 16 * args[1], pad.midiAdapter);
+            }
         }
     ];
 
@@ -168,7 +174,6 @@
             .filter(function(buttonLookup){ return buttonLookup.applies(args); })
             .map(function(buttonLookup){ return buttonLookup.lookup(this, args); }.bind(this))
         [0];
-        //return new $.Button(144, id, this.midiAdapter);
     };
 })(window.launchpad = window.launchpad || {});
 ;(function($){
