@@ -153,6 +153,9 @@
     Pad.prototype.clear = function(){
         this.midiAdapter.send(176, 0, 0);
     };
+    Pad.prototype.button = function(id){
+        return new $.Button(144, id, this.midiAdapter);
+    };
 })(window.launchpad = window.launchpad || {});
 ;(function($){
     $.version = '1.0.0';

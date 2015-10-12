@@ -75,4 +75,24 @@ describe('Launchpad', function(){
             expect(mockMidiAdapter.arguments).toEqual([176, 0, 0]);
         });
     });
+
+    describe('button', function(){
+        it('should return regular button id', function(){
+            var pad = new launchpad.Launchpad(mockMidiAdapter);
+
+            [0, 1, 2, 3, 4, 5, 6, 7]
+                .map(function(n){ return 16*n; })
+                .map(function(m){
+                    return [0, 1, 2, 3, 4, 5, 6, 7, 8].map(function(n){ return m + n; });
+                })
+                .reduce(function(result, ids){ return result.concat(ids); },[])
+                .map(function(id){ return { 'id': id, 'note': id }; })
+                .forEach(function(data){
+                    var button = pad.button(data.id);
+
+                    expect(button.channel).toBe(144);
+                    expect(button.note).toBe(data.note);
+                });
+        });
+    });
 });
