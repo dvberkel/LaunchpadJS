@@ -5,6 +5,8 @@ describe('button', function(){
     };
 
     var ANY_CHANNEL = 144;
+    var CONTROL_CHANNEL = 176;
+    var REGULAR_CHANNEL = ANY_CHANNEL;
     var ANY_NOTE = 0;
     var mockMidiAdapter;
 
@@ -49,5 +51,41 @@ describe('button', function(){
         button.turn('off');
 
         expect(mockMidiAdapter.arguments).toEqual([ANY_CHANNEL, ANY_NOTE, 0]);
+    });
+
+    it('from control channel are controllers', function(){
+        var button = new launchpad.Button(CONTROL_CHANNEL, ANY_NOTE, mockMidiAdapter);
+
+        expect(button.isControl()).toBe(true);
+    });
+
+    it('from regular channel are not controllers', function(){
+        var button = new launchpad.Button(REGULAR_CHANNEL, ANY_NOTE, mockMidiAdapter);
+
+        expect(button.isControl()).toBe(false);
+    });
+
+    describe('regular button', function(){
+        it('should have x, y coordinates', function(){
+            var button = new launchpad.Button(REGULAR_CHANNEL, ANY_NOTE, mockMidiAdapter);
+
+            expect(button.x).toBe(ANY_NOTE % 16);
+            expect(button.y).toBe(Math.floor(ANY_NOTE / 16));
+        });
+
+        it('should have and id', function(){
+            var button = new launchpad.Button(REGULAR_CHANNEL, ANY_NOTE, mockMidiAdapter);
+
+            expect(button.id).toBe(ANY_NOTE);
+        })
+    });
+
+    describe('control button', function(){
+        it('should have and id', function(){
+            var button = new launchpad.Button(CONTROL_CHANNEL, ANY_NOTE, mockMidiAdapter);
+
+            expect(button.id).toBe(ANY_NOTE - 104);
+        })
+
     });
 });

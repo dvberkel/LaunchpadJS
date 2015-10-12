@@ -19,6 +19,13 @@
         this.channel = channel;
         this.note = note;
         this.midiAdapter = midiAdapter;
+        this.id = this.note;
+        if (!this.isControl()) {
+            this.x = this.note % 16;
+            this.y = Math.floor(this.note / 16);
+        } else {
+            this.id -= 104;
+        }
     };
     Button.prototype = Object.create($.Observable.prototype);
     Button.prototype.constructor = Button;
@@ -32,6 +39,9 @@
     }
     Button.prototype.send = function(velocity){
         this.midiAdapter.send(this.channel, this.note, velocity);
+    };
+    Button.prototype.isControl = function(){
+        return this.channel === 176;
     };
 })(window.launchpad = window.launchpad || {});
 ;;(function($, undefined){
