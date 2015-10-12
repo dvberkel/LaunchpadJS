@@ -123,4 +123,19 @@ describe('Launchpad', function(){
                 });
         });
     });
+
+    describe('controlButton', function(){
+        it('should return a Button by control button id', function(){
+            var pad = new launchpad.Launchpad(mockMidiAdapter);
+
+            [0, 1, 2, 3, 4, 5, 6, 7]
+                .map(function(id){ return { 'id': id, 'note': 104 + id }; })
+                .forEach(function(data){
+                    var button = pad.controlButton(data.id);
+
+                    expect(button.channel).toBe(176);
+                    expect(button.note).toBe(data.note);
+                });
+        });
+    });
 });

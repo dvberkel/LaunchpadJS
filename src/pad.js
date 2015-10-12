@@ -44,11 +44,14 @@
     Pad.prototype.clear = function(){
         this.midiAdapter.send(176, 0, 0);
     };
-    Pad.prototype.button = function(id){
+    Pad.prototype.button = function(){
         var args = Array.prototype.slice.call(arguments);
         return buttonLookups
             .filter(function(buttonLookup){ return buttonLookup.applies(args); })
             .map(function(buttonLookup){ return buttonLookup.lookup(this, args); }.bind(this))
         [0];
+    };
+    Pad.prototype.controlButton = function(id){
+        return new $.Button(176, 104 + id, this.midiAdapter);
     };
 })(window.launchpad = window.launchpad || {});
