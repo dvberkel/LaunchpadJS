@@ -1,6 +1,14 @@
 # LaunchpadJS
 Interacting with a Novation Launchpad from your browser with the [web MIDI API][midi-web].
 
+## Usage
+
+Install LaunchpadJS with [bower][] via the following command
+
+```shell
+npm install --save LaunchpadJS
+```
+
 ## Development Notes
 
 ### Launchpad documentation
@@ -20,5 +28,6 @@ Launchpad.connect().then(function(launchpad){
 ```
 
 [midi-web]: https://webaudio.github.io/web-midi-api/
+[bower]: http://bower.io/
 [reference]: https://d19ulaff0trnck.cloudfront.net/sites/default/files/novation/downloads/4080/launchpad-programmers-reference.pdf
 [dreamcode]: http://hood.ie/initiatives/#dreamcode
