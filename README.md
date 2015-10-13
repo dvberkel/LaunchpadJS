@@ -9,6 +9,8 @@ Install LaunchpadJS with [bower][] via the following command
 npm install --save LaunchpadJS
 ```
 
+or download a distribution from [releases][].
+
 ## Development Notes
 
 ### Launchpad documentation
@@ -29,5 +31,6 @@ Launchpad.connect().then(function(launchpad){
 
 [midi-web]: https://webaudio.github.io/web-midi-api/
 [bower]: http://bower.io/
+[releases]: https://github.com/dvberkel/LaunchpadJS/releases
 [reference]: https://d19ulaff0trnck.cloudfront.net/sites/default/files/novation/downloads/4080/launchpad-programmers-reference.pdf
 [dreamcode]: http://hood.ie/initiatives/#dreamcode
