@@ -1,11 +1,13 @@
 # LaunchpadJS
 Interacting with a Novation Launchpad from your browser with the [web MIDI API][midi-web].
 
-## Launchpad documentation
+## Development Notes
+
+### Launchpad documentation
 
 The Novation Launchpad had an excellent [programmers reference][reference].
 
-## Dreamcode
+### Dreamcode
 The next code snippit is how I would like to use the API myself, i.e. the most ideal API. It is an example of [dreamcode][].
 
 ```js
