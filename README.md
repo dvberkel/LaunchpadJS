@@ -11,6 +11,12 @@ npm install --save LaunchpadJS
 
 or download a distribution from [releases][].
 
+Include `launchpad.min.js` in your html page
+
+```html
+<script src="bower_components/LaunchpadJS/launchpad.min.js"></script>
+```
+
 ## Development Notes
 
 ### Launchpad documentation
