@@ -30,6 +30,8 @@ launchpad.connect().then(function(pad){
 
 Now open your page in [Chrome][chrome] the only browser that natively implements the [Web Midi API][midi-web] at the [moment][can-i-use/midi].
 
+See the [wiki][] for an overview of the [API][api]
+
 ## Development Notes
 
 ### Launchpad documentation
@@ -43,3 +45,5 @@ The Novation Launchpad had an excellent [programmers reference][reference].
 [chrome]: https://www.google.com/chrome/browser/desktop/
 [can-i-use/midi]: http://caniuse.com/#feat=midi
 [reference]: https://d19ulaff0trnck.cloudfront.net/sites/default/files/novation/downloads/4080/launchpad-programmers-reference.pdf
+[wiki]: https://github.com/dvberkel/LaunchpadJS/wiki
+[api]: https://github.com/dvberkel/LaunchpadJS/wiki/API
