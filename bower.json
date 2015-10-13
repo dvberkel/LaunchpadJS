@@ -6,7 +6,7 @@
     "dvberkel <daan.v.berkel.1980@gmail.com>"
   ],
   "description": "Interacting with a Novation Launchpad from your browser with the web MIDI API.",
-  "main": "launchpad.js",
+  "main": "launchpad.min.js",
   "keywords": [
     "novation",
     "launchpad",
