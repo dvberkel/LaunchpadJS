@@ -36,18 +36,6 @@ Now open your page in [Chrome][chrome] the only browser that natively implements
 
 The Novation Launchpad had an excellent [programmers reference][reference].
 
-### Dreamcode
-The next code snippit is how I would like to use the API myself, i.e. the most ideal API. It is an example of [dreamcode][].
-
-```js
-launchpad.connect().then(function(pad){
-  pad.clear();
-  pad.on('press', function(button){
-    button.turn('red');
-  });
-});
-```
-
 [midi-web]: https://webaudio.github.io/web-midi-api/
 [bower]: http://bower.io/
 [releases]: https://github.com/dvberkel/LaunchpadJS/releases
@@ -55,4 +43,3 @@ launchpad.connect().then(function(pad){
 [chrome]: https://www.google.com/chrome/browser/desktop/
 [can-i-use/midi]: http://caniuse.com/#feat=midi
 [reference]: https://d19ulaff0trnck.cloudfront.net/sites/default/files/novation/downloads/4080/launchpad-programmers-reference.pdf
-[dreamcode]: http://hood.ie/initiatives/#dreamcode
