@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var template = require('gulp-template');
+var sourcemaps = require('gulp-sourcemaps');
 var KarmaServer = require('karma').Server;
 
 var bower = require('./bower.json');
@@ -24,8 +25,10 @@ gulp.task('concat', ['version'], function(){
 
 gulp.task('compress', ['concat'], function(){
     return gulp.src(dist_file)
+        .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(rename({ extname: '.min.js' }))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dist_dir));
 });
 
