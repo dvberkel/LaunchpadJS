@@ -16,5 +16,5 @@
     };
     MidiAdapter.prototype.send = function(channel, note, velocity){
         this.output.send([channel, note, velocity]);
-    }
-})(window.launchpad = window.launchpad || {});
+    };
+})(window.launchpad = window.launchpad || {})

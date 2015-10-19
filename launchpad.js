@@ -11,8 +11,8 @@
         (this.observers[event] || []).forEach(function(callback){
             callback.apply(undefined, args);
         });
-    }
-})(window.launchpad = window.launchpad || {});
+    };
+})(window.launchpad = window.launchpad || {})
 ;;(function($){
     var Button = $.Button = function(channel, note, midiAdapter){
         $.Observable.call(this);
@@ -36,14 +36,14 @@
         colors = $.extend(colors, { 'red': 0, 'green': 0 });
         var velocity = (colors.green % 4) * 16 + (colors.red % 4);
         this.send(velocity);
-    }
+    };
     Button.prototype.send = function(velocity){
         this.midiAdapter.send(this.channel, this.note, velocity);
     };
     Button.prototype.isControl = function(){
         return this.channel === 176;
     };
-})(window.launchpad = window.launchpad || {});
+})(window.launchpad = window.launchpad || {})
 ;;(function($, undefined){
     var defaults = $.defaults = {};
 
@@ -59,8 +59,8 @@
                 }
                 return undefined;
             }
-        }
-    };
+        };
+    }
 
     defaults.paintNames = {
         'red':    { 'red': 3, 'green': 0 },
@@ -79,13 +79,13 @@
                     return {
                         'input': selectItem(padName).from(midiAccess.inputs.values()),
                         'output': selectItem(padName).from(midiAccess.outputs.values())
-                    }
+                    };
                 })
                 .then(function(io){
                     return new $.MidiAdapter(io.input, io.output);
                 })
                 .then(function(midiAdapter){
-                    return new $.Launchpad(midiAdapter);;
+                    return new $.Launchpad(midiAdapter);
                 })
                 .then(function(pad){
                     accept(pad);
@@ -93,7 +93,7 @@
                 .catch(reject);
         }
     };
-})(window.launchpad = window.launchpad || {});
+})(window.launchpad = window.launchpad || {})
 ;;(function($){
     $.extend = function extend(){
         return Array.prototype.slice.call(arguments).reduce(function(result, dictionary){
@@ -103,15 +103,15 @@
                 }
             }
             return result;
-        }, {})
+        }, {});
     };
-})(window.launchpad = window.launchpad || {});
+})(window.launchpad = window.launchpad || {})
 ;;(function($){
     $.connect = function(options){
         options = $.extend(options || {}, $.defaults);
         return new Promise(options.midiAdapterFactory.bind(options));
     };
-})(window.launchpad = window.launchpad || {});
+})(window.launchpad = window.launchpad || {})
 ;;(function($){
     var MidiAdapter = $.MidiAdapter = function(input, output){
         $.Observable.call(this);
@@ -130,8 +130,8 @@
     };
     MidiAdapter.prototype.send = function(channel, note, velocity){
         this.output.send([channel, note, velocity]);
-    }
-})(window.launchpad = window.launchpad || {});
+    };
+})(window.launchpad = window.launchpad || {})
 ;;(function($){
     var inputHandlers = [
         {

@@ -7,6 +7,6 @@
                 }
             }
             return result;
-        }, {})
+        }, {});
     };
-})(window.launchpad = window.launchpad || {});
+})(window.launchpad = window.launchpad || {})

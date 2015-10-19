@@ -11,5 +11,5 @@
         (this.observers[event] || []).forEach(function(callback){
             callback.apply(undefined, args);
         });
-    }
-})(window.launchpad = window.launchpad || {});
+    };
+})(window.launchpad = window.launchpad || {})

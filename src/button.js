@@ -21,11 +21,11 @@
         colors = $.extend(colors, { 'red': 0, 'green': 0 });
         var velocity = (colors.green % 4) * 16 + (colors.red % 4);
         this.send(velocity);
-    }
+    };
     Button.prototype.send = function(velocity){
         this.midiAdapter.send(this.channel, this.note, velocity);
     };
     Button.prototype.isControl = function(){
         return this.channel === 176;
     };
-})(window.launchpad = window.launchpad || {});
+})(window.launchpad = window.launchpad || {})

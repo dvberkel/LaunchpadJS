@@ -13,8 +13,8 @@
                 }
                 return undefined;
             }
-        }
-    };
+        };
+    }
 
     defaults.paintNames = {
         'red':    { 'red': 3, 'green': 0 },
@@ -33,13 +33,13 @@
                     return {
                         'input': selectItem(padName).from(midiAccess.inputs.values()),
                         'output': selectItem(padName).from(midiAccess.outputs.values())
-                    }
+                    };
                 })
                 .then(function(io){
                     return new $.MidiAdapter(io.input, io.output);
                 })
                 .then(function(midiAdapter){
-                    return new $.Launchpad(midiAdapter);;
+                    return new $.Launchpad(midiAdapter);
                 })
                 .then(function(pad){
                     accept(pad);
@@ -47,4 +47,4 @@
                 .catch(reject);
         }
     };
-})(window.launchpad = window.launchpad || {});
+})(window.launchpad = window.launchpad || {})
