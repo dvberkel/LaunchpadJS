@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var template = require('gulp-template');
@@ -21,6 +22,12 @@ gulp.task('concat', ['version'], function(){
     return gulp.src(['src/observer.js', 'src/**.js'])
         .pipe(concat(dist_file, { newLine: ';' }))
         .pipe(gulp.dest(dist_dir));
+});
+
+gulp.task('jshint', ['concat'], function(){
+    return gulp.src(dist_file)
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 gulp.task('compress', ['concat'], function(){
