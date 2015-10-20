@@ -36,6 +36,10 @@ gulp.task('jshint-concat', ['concat'], function(){
         .pipe(jshint.reporter('default'));
 });
 
+gulp.task('jshint', ['jshint-source', 'jshint-concat'], function(){
+    /* do nothing */
+});
+
 gulp.task('compress', ['concat'], function(){
     return gulp.src(dist_file)
         .pipe(sourcemaps.init())
