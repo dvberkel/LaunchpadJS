@@ -24,10 +24,16 @@ gulp.task('jshint-source', [], function(){
         .pipe(jshint.reporter('default'));
 });
 
-gulp.task('concat', ['version', 'jshint'], function(){
+gulp.task('concat', ['version', 'jshint-source'], function(){
     return gulp.src(['src/observer.js', 'src/**.js'])
         .pipe(concat(dist_file, { newLine: ';' }))
         .pipe(gulp.dest(dist_dir));
+});
+
+gulp.task('jshint-concat', ['concat'], function(){
+    return gulp.src(dist_file)
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 gulp.task('compress', ['concat'], function(){
