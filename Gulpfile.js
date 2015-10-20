@@ -18,7 +18,7 @@ gulp.task('version', function(){
         .pipe(gulp.dest('src/'));
 });
 
-gulp.task('jshint', [], function(){
+gulp.task('jshint-source', [], function(){
     return gulp.src(['src/**.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
