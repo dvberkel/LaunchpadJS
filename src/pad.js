@@ -1,4 +1,4 @@
-;(function($){
+(function($){
     var inputHandlers = [
         {
             'applies': function(channel, note, velocity){ return velocity === 127; },

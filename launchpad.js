@@ -1,4 +1,4 @@
-;(function($){
+(function($){
     var Observable = $.Observable = function(){
         this.observers = {};
     };
@@ -12,8 +12,8 @@
             callback.apply(undefined, args);
         });
     };
-})(window.launchpad = window.launchpad || {})
-;;(function($){
+})(window.launchpad = window.launchpad || {});
+;(function($){
     var Button = $.Button = function(channel, note, midiAdapter){
         $.Observable.call(this);
         this.channel = channel;
@@ -43,8 +43,8 @@
     Button.prototype.isControl = function(){
         return this.channel === 176;
     };
-})(window.launchpad = window.launchpad || {})
-;;(function($, undefined){
+})(window.launchpad = window.launchpad || {});
+;(function($, undefined){
     var defaults = $.defaults = {};
 
     function selectItem(name){
@@ -93,8 +93,8 @@
                 .catch(reject);
         }
     };
-})(window.launchpad = window.launchpad || {})
-;;(function($){
+})(window.launchpad = window.launchpad || {});
+;(function($){
     $.extend = function extend(){
         return Array.prototype.slice.call(arguments).reduce(function(result, dictionary){
             for (var key in dictionary){
@@ -105,14 +105,14 @@
             return result;
         }, {});
     };
-})(window.launchpad = window.launchpad || {})
-;;(function($){
+})(window.launchpad = window.launchpad || {});
+;(function($){
     $.connect = function(options){
         options = $.extend(options || {}, $.defaults);
         return new Promise(options.midiAdapterFactory.bind(options));
     };
-})(window.launchpad = window.launchpad || {})
-;;(function($){
+})(window.launchpad = window.launchpad || {});
+;(function($){
     var MidiAdapter = $.MidiAdapter = function(input, output){
         $.Observable.call(this);
         this.input = input;
@@ -131,8 +131,8 @@
     MidiAdapter.prototype.send = function(channel, note, velocity){
         this.output.send([channel, note, velocity]);
     };
-})(window.launchpad = window.launchpad || {})
-;;(function($){
+})(window.launchpad = window.launchpad || {});
+;(function($){
     var inputHandlers = [
         {
             'applies': function(channel, note, velocity){ return velocity === 127; },
