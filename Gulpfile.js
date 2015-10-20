@@ -18,19 +18,19 @@ gulp.task('version', function(){
         .pipe(gulp.dest('src/'));
 });
 
-gulp.task('concat', ['version'], function(){
+gulp.task('jshint', [], function(){
+    return gulp.src(['src/**.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+});
+
+gulp.task('concat', ['version', 'jshint'], function(){
     return gulp.src(['src/observer.js', 'src/**.js'])
         .pipe(concat(dist_file, { newLine: ';' }))
         .pipe(gulp.dest(dist_dir));
 });
 
-gulp.task('jshint', ['concat'], function(){
-    return gulp.src(dist_file)
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
-});
-
-gulp.task('compress', ['jshint'], function(){
+gulp.task('compress', ['concat'], function(){
     return gulp.src(dist_file)
         .pipe(sourcemaps.init())
         .pipe(uglify())
