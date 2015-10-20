@@ -1,4 +1,4 @@
-;(function($){
+(function($){
     var Observable = $.Observable = function(){
         this.observers = {};
     };
@@ -12,4 +12,4 @@
             callback.apply(undefined, args);
         });
     };
-})(window.launchpad = window.launchpad || {})
+})(window.launchpad = window.launchpad || {});

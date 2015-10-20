@@ -1,4 +1,4 @@
-;(function($){
+(function($){
     var MidiAdapter = $.MidiAdapter = function(input, output){
         $.Observable.call(this);
         this.input = input;
@@ -17,4 +17,4 @@
     MidiAdapter.prototype.send = function(channel, note, velocity){
         this.output.send([channel, note, velocity]);
     };
-})(window.launchpad = window.launchpad || {})
+})(window.launchpad = window.launchpad || {});

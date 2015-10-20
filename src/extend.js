@@ -1,4 +1,4 @@
-;(function($){
+(function($){
     $.extend = function extend(){
         return Array.prototype.slice.call(arguments).reduce(function(result, dictionary){
             for (var key in dictionary){
@@ -9,4 +9,4 @@
             return result;
         }, {});
     };
-})(window.launchpad = window.launchpad || {})
+})(window.launchpad = window.launchpad || {});

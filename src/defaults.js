@@ -1,4 +1,4 @@
-;(function($, undefined){
+(function($, undefined){
     var defaults = $.defaults = {};
 
     function selectItem(name){
@@ -47,4 +47,4 @@
                 .catch(reject);
         }
     };
-})(window.launchpad = window.launchpad || {})
+})(window.launchpad = window.launchpad || {});

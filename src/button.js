@@ -1,4 +1,4 @@
-;(function($){
+(function($){
     var Button = $.Button = function(channel, note, midiAdapter){
         $.Observable.call(this);
         this.channel = channel;
@@ -28,4 +28,4 @@
     Button.prototype.isControl = function(){
         return this.channel === 176;
     };
-})(window.launchpad = window.launchpad || {})
+})(window.launchpad = window.launchpad || {});
