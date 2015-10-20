@@ -21,7 +21,8 @@ gulp.task('version', function(){
 gulp.task('jshint-source', [], function(){
     return gulp.src(['src/**.js'])
         .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('concat', ['version', 'jshint-source'], function(){
@@ -33,7 +34,8 @@ gulp.task('concat', ['version', 'jshint-source'], function(){
 gulp.task('jshint-concat', ['concat'], function(){
     return gulp.src(dist_file)
         .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('jshint', ['jshint-source', 'jshint-concat'], function(){
