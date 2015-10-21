@@ -34,6 +34,8 @@ See the [wiki][] for an overview of the [API][api]
 
 ## Development Notes
 
+See the [issues][], for things to work on.
+
 ### Launchpad documentation
 
 The Novation Launchpad had an excellent [programmers reference][reference].
@@ -47,3 +49,4 @@ The Novation Launchpad had an excellent [programmers reference][reference].
 [reference]: https://d19ulaff0trnck.cloudfront.net/sites/default/files/novation/downloads/4080/launchpad-programmers-reference.pdf
 [wiki]: https://github.com/dvberkel/LaunchpadJS/wiki
 [api]: https://github.com/dvberkel/LaunchpadJS/wiki/API
+[issues]: https://github.com/dvberkel/LaunchpadJS/issues
