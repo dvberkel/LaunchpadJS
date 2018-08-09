@@ -6,7 +6,7 @@ Interacting with a Novation Launchpad from your browser with the [web MIDI API][
 Install LaunchpadJS with [bower][] via the following command
 
 ```shell
-npm install --save LaunchpadJS
+bower install --save LaunchpadJS
 ```
 
 or download a distribution from [releases][].
