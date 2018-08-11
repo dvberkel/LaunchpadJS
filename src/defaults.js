@@ -19,9 +19,9 @@
     defaults.paintNames = {
         'red':    { 'red': 3, 'green': 0 },
         'green':  { 'red': 0, 'green': 3 },
-        'orange': { 'red': 3, 'green': 3 },
+        'orange': { 'red': 3, 'green': 3 }
     };
-    defaults.name = 'Launchpad Mini';
+    defaults.name = 'Launchpad Mini MIDI 1';
     defaults.sysex = false;
     defaults.midiAdapterFactory = function(accept, reject){
         if (!navigator.requestMIDIAccess){
